@@ -1,0 +1,28 @@
+{% extends "admin/base_site.html" %}
+{% block content %}
+<h1>IP Analytics Dashboard</h1>
+
+<h2>Traffic by Country</h2>
+<table class="table">
+    <tr><th>Country</th><th>Total Requests</th></tr>
+    {% for row in country_data %}
+    <tr><td>{{ row.country }}</td><td>{{ row.total }}</td></tr>
+    {% end for %}
+</table>
+
+<h2>Traffic by City</h2>
+<table class="table">
+    <tr><th>City</th><th>Total Requests</th></tr>
+    {% for row in city_data %}
+    <tr><td>{{ row.city }}</td><td>{{ row.total }}</td></tr>
+    {% end for %}
+</table>
+
+<h2>Requests (Last 7 Days)</h2>
+<table class="table">
+    <tr><th>Date</th><th>Total</th></tr>
+    {% for row in weekly_data %}
+    <tr><td>{{ row.timestamp__date }}</td><td>{{ row.total }}</td></tr>
+    {% end for %}
+</table>
+{% end block %}
